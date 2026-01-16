@@ -1,0 +1,21 @@
+flexia-landing/
+├── index.html
+├── css/
+│   └── style.css
+├── js/
+│   └── main.js
+├── images/
+│   ├── logo/
+│   │   ├── favicon.ico
+│   │   ├── flexia-logo.png
+│   │   └── flexia-logo-white.png
+│   ├── icons/
+│   │   ├── game-icons.svg
+│   │   └── features-icons.svg
+│   ├── avatars/
+│   │   ├── avatar1.jpg
+│   │   ├── avatar2.jpg
+│   │   └── avatar3.jpg
+│   └── app-preview.png
+└── videos/
+    └── hero-bg.mp4
