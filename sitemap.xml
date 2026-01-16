@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+        xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+    
+    <!-- Home Page - Highest Priority -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://flexiapremiumng.dedyn.io/"/>
+        <image:image>
+            <image:loc>https://flexiapremiumng.dedyn.io/images/og-investment-2026.jpg</image:loc>
+            <image:title>Flexia Premium NG - ₦8,000 Investment Platform 2026</image:title>
+            <image:caption>Invest ₦8,000 to earn ₦50,000+ monthly through gaming</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Investment Value Section -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/#value</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- ROI Calculator Section -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/#roi-calculator</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <!-- Registration Page -->
+    <url>
+        <loc>https://flexiapremium.onrender.com/register</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <xhtml:link rel="alternate" hreflang="en" href="https://flexiapremium.onrender.com/register"/>
+    </url>
+    
+    <!-- Login Page -->
+    <url>
+        <loc>https://flexiapremium.onrender.com/login</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Dashboard (if applicable) -->
+    <url>
+        <loc>https://flexiapremium.onrender.com/dashboard</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- FAQ Section -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/#faq</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <!-- Legal Pages -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/terms</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/privacy</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/disclaimer</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/compliance</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/responsible-gaming</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <!-- Content Pages -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/testimonials</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://flexiapremiumng.dedyn.io/images/testimonials-banner.jpg</image:loc>
+            <image:title>Flexia Premium Investor Success Stories</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/payment-methods</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/withdrawal-info</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/contact-compliance</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <!-- Blog/News Articles (Future) -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/blog</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/blog/how-to-earn-₦50000-monthly-gaming</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Flexia Premium NG</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-16</news:publication_date>
+            <news:title>How to Earn ₦50,000 Monthly Through Gaming Investments</news:title>
+        </news:news>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/blog/2026-gaming-investment-trends</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+        <news:news>
+            <news:publication>
+                <news:name>Flexia Premium NG</news:name>
+                <news:language>en</news:language>
+            </news:publication>
+            <news:publication_date>2025-01-16</news:publication_date>
+            <news:title>2026 Gaming Investment Trends in Nigeria</news:title>
+        </news:news>
+    </url>
+    
+    <!-- Game Pages -->
+    <url>
+        <loc>https://flexiapremium.onrender.com/games/snake-master</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://flexiapremiumng.dedyn.io/images/games/snake-master.jpg</image:loc>
+            <image:title>Snake Master Game - Earn ₦200 per apple</image:title>
+        </image:image>
+        <video:video>
+            <video:thumbnail_loc>https://flexiapremiumng.dedyn.io/videos/snake-game-preview.jpg</video:thumbnail_loc>
+            <video:title>Snake Master Game Demo</video:title>
+            <video:description>Earn ₦200 for every apple your snake eats</video:description>
+        </video:video>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremium.onrender.com/games/coin-flip</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://flexiapremiumng.dedyn.io/images/games/coin-flip.jpg</image:loc>
+            <image:title>Coin Flip Game - Double your bet</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremium.onrender.com/games/plinko</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://flexiapremiumng.dedyn.io/images/games/plinko-game.jpg</image:loc>
+            <image:title>Plinko Game - Win up to 10x your bet</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremium.onrender.com/games/daily-spin</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://flexiapremiumng.dedyn.io/images/games/daily-spin.jpg</image:loc>
+            <image:title>Daily Spin Wheel - Win up to ₦1,000 daily</image:title>
+        </image:image>
+    </url>
+    
+    <!-- Earning Pages -->
+    <url>
+        <loc>https://flexiapremium.onrender.com/earn/tiktok-tasks</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://flexiapremiumng.dedyn.io/images/earn/tiktok-tasks.jpg</image:loc>
+            <image:title>Daily TikTok Tasks - Earn ₦150 daily</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremium.onrender.com/earn/referrals</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremium.onrender.com/earn/achievements</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Withdrawal Pages -->
+    <url>
+        <loc>https://flexiapremium.onrender.com/withdraw</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremium.onrender.com/withdraw/history</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Profile Pages -->
+    <url>
+        <loc>https://flexiapremium.onrender.com/profile</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremium.onrender.com/profile/transactions</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremium.onrender.com/profile/referrals</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Support Pages -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/support</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/contact</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/help</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <!-- Mobile Pages -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/mobile</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/download</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- About Pages -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/about</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/about/team</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/about/mission</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+    <!-- Press/Media -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/press</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.4</priority>
+    </url>
+    
+    <!-- Careers (Future) -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/careers</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- API Documentation (Future) -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/api</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.3</priority>
+    </url>
+    
+    <!-- Sitemap Index (if needed) -->
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/sitemap-index.xml</loc>
+        <lastmod>2025-01-16</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.2</priority>
+    </url>
+    
+</urlset>
