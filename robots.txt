@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /private/
+Disallow: /cgi-bin/
+Disallow: /search?
+
+Sitemap: https://flexiapremiumng.dedyn.io/sitemap.xml
+Sitemap: https://flexiapremiumng.dedyn.io/sitemap-news.xml
+Sitemap: https://flexiapremiumng.dedyn.io/sitemap-images.xml
