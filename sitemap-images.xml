@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/</loc>
+        <image:image>
+            <image:loc>https://flexiapremiumng.dedyn.io/images/og-investment-2026.jpg</image:loc>
+            <image:title>Flexia Premium NG ₦8,000 Investment Platform</image:title>
+            <image:caption>Invest ₦8,000 to earn ₦50,000+ monthly through gaming in Nigeria 2026</image:caption>
+        </image:image>
+        <image:image>
+            <image:loc>https://flexiapremiumng.dedyn.io/images/logo/flexia-logo.png</image:loc>
+            <image:title>Flexia Premium Logo</image:title>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://flexiapremiumng.dedyn.io/testimonials</loc>
+        <image:image>
+            <image:loc>https://flexiapremiumng.dedyn.io/images/testimonials-banner.jpg</image:loc>
+            <image:title>Premium Investor Success Stories</image:title>
+        </image:image>
+    </url>
+    
+</urlset>
