@@ -186,42 +186,180 @@
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@300;400;500;600;700&display=swap" as="style">
 </head>
 <body>
-   <!-- Hero Section -->
+  <!-- Hero Section -->
 <section class="hero" id="home">
     <div class="hero-overlay"></div>
     <video autoplay muted loop playsinline class="hero-video" poster="images/hero-poster.jpg" preload="metadata">
         <source src="videos/hero-bg.mp4" type="video/mp4">
+        <!-- Fallback for browsers that don't support video -->
         <div class="hero-fallback"></div>
     </video>
     
     <div class="container">
         <div class="hero-content">
-            <div class="hero-header">
-                <div class="logo-container">
-                    <!-- Your Logo Here -->
-                    <img src="images/logo/flexia-logo-white.png" alt="Flexia Premium NG Logo" class="logo-img">
-                    <div class="logo-badge">
-                        <span class="badge-text">₦8K</span>
-                        <span class="badge-label">INVESTMENT</span>
-                    </div>
-                    <h1><span class="highlight">INVEST ONCE</span> EARN DAILY IN 2026</h1>
+            <!-- Logo with Investment Badge -->
+            <div class="logo-container">
+                <!-- Your Original Circular Logo -->
+                <div class="logo">
+                    <img src="images/logo/flexia-logo-white.png" alt="Flexia Premium NG Logo" class="logo-image">
                 </div>
+                
+                <!-- Investment Amount Badge -->
+                <div class="investment-badge">
+                    <span class="investment-amount">₦8,000</span>
+                    <span class="investment-label">PREMIUM REGISTRATION</span>
+                </div>
+                
+                <!-- Main Headline -->
+                <h1 class="hero-title">
+                    <span class="title-line">INVEST <span class="highlight">₦8,000</span></span>
+                    <span class="title-line">EARN <span class="highlight">₦50,000+</span> MONTHLY</span>
+                </h1>
             </div>
             
-            <div class="investment-badge">
-                <span class="badge-label">EXCLUSIVE 2026 OPPORTUNITY</span>
-                <span class="badge-amount">₦8,000 REGISTRATION</span>
+            <!-- Exclusive Badge -->
+            <div class="exclusive-badge">
+                <i class="fas fa-crown"></i>
+                <span class="badge-text">EXCLUSIVE 2026 INVESTMENT PLATFORM</span>
+                <i class="fas fa-crown"></i>
             </div>
             
-            <div class="hero-subtitle-wrapper">
-                <p class="hero-subtitle">
-                    <strong>NIGERIA'S MOST EXCLUSIVE GAMING INVESTMENT PLATFORM</strong><br>
+            <!-- Hero Description -->
+            <div class="hero-description">
+                <p class="main-description">
+                    <strong>Nigeria's Most Premium Gaming Investment Opportunity</strong>
+                </p>
+                <p class="sub-description">
                     One-time ₦8,000 registration unlocks unlimited earning potential. 
-                    Join the elite 2,150+ investors earning ₦50,000+ monthly through gaming.
+                    Join 2,150+ verified investors earning ₦50,000+ monthly through gaming.
                 </p>
             </div>
             
-            <!-- Rest of the hero section remains the same -->
+            <!-- ROI Highlights -->
+            <div class="roi-highlights">
+                <div class="roi-item">
+                    <div class="roi-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="roi-content">
+                        <span class="roi-value">500%+</span>
+                        <span class="roi-label">Potential ROI</span>
+                    </div>
+                </div>
+                
+                <div class="roi-item">
+                    <div class="roi-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="roi-content">
+                        <span class="roi-value">₦150</span>
+                        <span class="roi-label">Daily Tasks</span>
+                    </div>
+                </div>
+                
+                <div class="roi-item">
+                    <div class="roi-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="roi-content">
+                        <span class="roi-value">₦7,500</span>
+                        <span class="roi-label">Per Referral</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Section -->
+            <div class="cta-section">
+                <div class="cta-header">
+                    <h3>LIMITED 2026 SLOTS AVAILABLE</h3>
+                    <p class="cta-subtitle">Register now before price increases to ₦10,000</p>
+                </div>
+                
+                <div class="cta-buttons">
+                    <a href="https://flexiapremium.onrender.com/register" class="btn btn-premium">
+                        <span class="btn-content">
+                            <span class="btn-icon"><i class="fas fa-crown"></i></span>
+                            <span class="btn-text">
+                                <span class="btn-main">INVEST ₦8,000 NOW</span>
+                                <span class="btn-sub">Start Earning Today</span>
+                            </span>
+                        </span>
+                    </a>
+                    
+                    <a href="#roi-calculator" class="btn btn-secondary">
+                        <i class="fas fa-calculator"></i>
+                        <span>Calculate Your ROI</span>
+                    </a>
+                </div>
+                
+                <div class="security-badges">
+                    <div class="security-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Bank-Level Security</span>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Verified Platform</span>
+                    </div>
+                    <div class="security-item">
+                        <i class="fas fa-clock"></i>
+                        <span>24/7 Support</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Stats Section -->
+            <div class="stats-section">
+                <div class="stats-container">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">2,150+</span>
+                                <span class="stat-label">Premium Investors</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-money-bill-wave"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">₦48M+</span>
+                                <span class="stat-label">Total Payouts</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">99.9%</span>
+                                <span class="stat-label">Satisfaction Rate</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stat-card">
+                            <div class="stat-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="stat-content">
+                                <span class="stat-number">₦50K+</span>
+                                <span class="stat-label">Avg. Monthly ROI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <span>Discover More</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
         </div>
     </div>
 </section>
