@@ -12,10 +12,10 @@
     <meta property="og:title" content="Flexia Premium NG 2026">
     <meta property="og:description" content="Premium gaming investment platform with proven ROI">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="images/logo/flexia-logo.png">
+    <meta property="og:image" content="https://flexiapremium.onrender.com/images/logo/flexia-logo.png">
     
-    <!-- Favicon -->
-    <link rel="icon" href="images/logo/favicon.ico" type="image/x-icon">
+    <!-- Favicon - Using PNG format for reliability -->
+    <link rel="icon" type="image/png" href="images/logo/flexia-logo.png">
     <link rel="apple-touch-icon" href="images/logo/flexia-logo.png">
     
     <!-- Fonts -->
@@ -26,31 +26,82 @@
     
     <!-- Main CSS -->
     <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Inline CSS for immediate loading */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #0A0A1A;
+            color: white;
+            overflow-x: hidden;
+        }
+        
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #050510;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(108, 99, 255, 0.3);
+            border-top-color: #6C63FF;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader"></div>
+        <p>Loading Flexia Premium...</p>
+    </div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
             <div class="nav-content">
                 <!-- Logo -->
                 <div class="logo-container">
-                    <img src="images/logo/flexia-logo.png" alt="Flexia Premium NG" class="logo">
+                    <img src="images/logo/flexia-logo.png" alt="Flexia Premium NG" class="logo" onerror="this.src='https://placehold.co/40/6C63FF/FFFFFF?text=FP'">
                     <span class="logo-text">FLEXIA <span class="premium-text">PREMIUM</span></span>
                 </div>
                 
                 <!-- Mobile Menu Button -->
-                <button class="mobile-menu-btn" aria-label="Menu">
+                <button class="mobile-menu-btn" aria-label="Menu" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </button>
                 
                 <!-- Navigation Links -->
-                <div class="nav-links">
+                <div class="nav-links" id="navLinks">
                     <a href="#home" class="nav-link active">Home</a>
                     <a href="#value" class="nav-link">Investment Value</a>
                     <a href="#calculator" class="nav-link">ROI Calculator</a>
                     <a href="#testimonials" class="nav-link">Success Stories</a>
                     <a href="#faq" class="nav-link">FAQ</a>
-                    <a href="#register" class="nav-link btn-register">Register Now</a>
+                    <a href="https://flexiapremium.onrender.com/register" class="nav-link btn-register" target="_blank">Register Now</a>
                 </div>
             </div>
         </div>
@@ -59,12 +110,13 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="hero-bg">
-            <!-- Background Video -->
-            <video autoplay muted loop playsinline class="hero-video">
+            <!-- Background Video with fallback -->
+            <video autoplay muted loop playsinline class="hero-video" poster="images/background.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                 <source src="videos/hero-bg.mp4" type="video/mp4">
+                <source src="videos/hero-bg.webm" type="video/webm">
                 <!-- Fallback Image -->
-                <img src="images/background.jpg" alt="Hero Background" class="hero-fallback">
             </video>
+            <img src="images/background.jpg" alt="Hero Background" class="hero-fallback" style="display:none;">
             <div class="hero-overlay"></div>
         </div>
         
@@ -72,7 +124,7 @@
             <div class="hero-content">
                 <!-- Hero Logo -->
                 <div class="hero-logo">
-                    <img src="images/logo/flexia-logo.png" alt="Flexia Premium Logo" class="hero-logo-img">
+                    <img src="images/logo/flexia-logo.png" alt="Flexia Premium Logo" class="hero-logo-img" onerror="this.src='https://placehold.co/120/6C63FF/FFFFFF?text=FP'">
                     <div class="hero-logo-badge">
                         <span class="badge-amount">₦8,000</span>
                         <span class="badge-text">Premium Registration</span>
@@ -107,7 +159,7 @@
                 
                 <!-- CTA Buttons -->
                 <div class="hero-cta">
-                    <a href="#register" class="btn btn-primary">
+                    <a href="https://flexiapremium.onrender.com/register" class="btn btn-primary" target="_blank">
                         <i class="fas fa-crown"></i>
                         <span>Invest ₦8,000 Now</span>
                     </a>
@@ -200,8 +252,8 @@
                             <i class="fas fa-calendar-day"></i>
                             Daily Task Days
                         </label>
-                        <input type="range" id="dailyTasks" min="0" max="30" value="25">
-                        <span class="input-value">25 days</span>
+                        <input type="range" id="dailyTasks" min="0" max="30" value="25" step="1">
+                        <span class="input-value" id="dailyTasksValue">25 days</span>
                     </div>
                     
                     <div class="input-group">
@@ -209,8 +261,8 @@
                             <i class="fas fa-apple-alt"></i>
                             Daily Apples Collected
                         </label>
-                        <input type="range" id="gameEarnings" min="0" max="100" value="50">
-                        <span class="input-value">50 apples/day</span>
+                        <input type="range" id="gameEarnings" min="0" max="100" value="50" step="5">
+                        <span class="input-value" id="gameEarningsValue">50 apples/day</span>
                     </div>
                     
                     <div class="input-group">
@@ -218,8 +270,8 @@
                             <i class="fas fa-user-plus"></i>
                             Monthly Referrals
                         </label>
-                        <input type="range" id="referrals" min="0" max="20" value="3">
-                        <span class="input-value">3 referrals</span>
+                        <input type="range" id="referrals" min="0" max="20" value="3" step="1">
+                        <span class="input-value" id="referralsValue">3 referrals</span>
                     </div>
                 </div>
                 
@@ -270,7 +322,7 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img src="images/avatars/avatar1.jpg" alt="Emeka C." class="testimonial-avatar">
+                        <img src="images/avatars/avatar1.jpg" alt="Emeka C." class="testimonial-avatar" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Emeka'">
                         <div class="testimonial-info">
                             <h4>Emeka C.</h4>
                             <span class="testimonial-role">Businessman, Lagos</span>
@@ -290,7 +342,7 @@
                 
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img src="images/avatars/avatar2.jpg" alt="Chioma O." class="testimonial-avatar">
+                        <img src="images/avatars/avatar2.jpg" alt="Chioma O." class="testimonial-avatar" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Chioma'">
                         <div class="testimonial-info">
                             <h4>Chioma O.</h4>
                             <span class="testimonial-role">Student, UNILAG</span>
@@ -310,7 +362,7 @@
                 
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img src="images/avatars/avatar3.jpg" alt="Tunde A." class="testimonial-avatar">
+                        <img src="images/avatars/avatar3.jpg" alt="Tunde A." class="testimonial-avatar" onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=Tunde'">
                         <div class="testimonial-info">
                             <h4>Tunde A.</h4>
                             <span class="testimonial-role">Entrepreneur, PH</span>
@@ -416,7 +468,7 @@
                 </div>
                 
                 <div class="register-cta">
-                    <a href="https://flexiapremium.onrender.com/register" class="btn btn-primary btn-large">
+                    <a href="https://flexiapremium.onrender.com/register" class="btn btn-primary btn-large" target="_blank">
                         <i class="fas fa-lock"></i>
                         <span>Secure Registration</span>
                         <small>₦8,000 Investment | Start Earning Today</small>
@@ -434,7 +486,7 @@
                     </div>
                 </div>
                 
-                <div class="urgency-note">
+                <div class="urgency-note" id="urgencyNote">
                     <i class="fas fa-clock"></i>
                     <span>Only 87 premium slots left at ₦8,000 price</span>
                 </div>
@@ -448,7 +500,7 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <div class="footer-logo">
-                        <img src="images/logo/flexia-logo-white.png" alt="Flexia Premium">
+                        <img src="images/logo/flexia-logo-white.png" alt="Flexia Premium" onerror="this.src='images/logo/flexia-logo.png'">
                         <div class="footer-logo-text">
                             <h4>FLEXIA PREMIUM NG</h4>
                             <p>Premium Gaming Investment Platform</p>
@@ -467,7 +519,7 @@
                         <a href="#calculator">ROI Calculator</a>
                         <a href="#testimonials">Success Stories</a>
                         <a href="#faq">FAQ</a>
-                        <a href="#register">Register</a>
+                        <a href="https://flexiapremium.onrender.com/register" target="_blank">Register</a>
                     </div>
                 </div>
                 
@@ -506,11 +558,24 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button class="back-to-top" aria-label="Back to top">
+    <button class="back-to-top" aria-label="Back to top" id="backToTop">
         <i class="fas fa-arrow-up"></i>
     </button>
 
     <!-- JavaScript -->
     <script src="js/main.js"></script>
+    
+    <!-- Inline script for immediate functionality -->
+    <script>
+        // Hide loading screen when page loads
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loadingScreen').style.opacity = '0';
+                setTimeout(function() {
+                    document.getElementById('loadingScreen').style.display = 'none';
+                }, 500);
+            }, 500);
+        });
+    </script>
 </body>
 </html>
