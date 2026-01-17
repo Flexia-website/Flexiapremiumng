@@ -193,3 +193,179 @@ document.addEventListener('DOMContentLoaded', function() {
         document.querySelector('.hero-subtitle').classList.add('animate');
     }, 300);
 });
+// Responsive JavaScript for all screen sizes
+
+// Handle responsive navigation
+function handleResponsiveNav() {
+    const desktopNav = document.querySelector('.desktop-nav');
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const windowWidth = window.innerWidth;
+    
+    if (windowWidth >= 1024) {
+        // Desktop view
+        if (desktopNav) desktopNav.style.display = 'flex';
+        if (mobileMenuBtn) mobileMenuBtn.style.display = 'none';
+        
+        // Close mobile sidebar if open
+        closeSidebarFunc();
+    } else {
+        // Mobile view
+        if (desktopNav) desktopNav.style.display = 'none';
+        if (mobileMenuBtn) mobileMenuBtn.style.display = 'flex';
+    }
+}
+
+// Handle responsive video
+function handleResponsiveVideo() {
+    const videoBg = document.querySelector('.video-background');
+    if (!videoBg) return;
+    
+    const windowWidth = window.innerWidth;
+    
+    if (windowWidth >= 768) {
+        videoBg.style.display = 'block';
+    } else {
+        videoBg.style.display = 'none';
+    }
+}
+
+// Handle responsive testimonial display
+function handleResponsiveTestimonials() {
+    const testimonialsGrid = document.querySelector('.testimonials-grid');
+    const testimonialsSwiper = document.querySelector('.testimonials-swiper');
+    const windowWidth = window.innerWidth;
+    
+    if (windowWidth >= 1024) {
+        // Show grid on desktop
+        if (testimonialsGrid) testimonialsGrid.style.display = 'grid';
+        if (testimonialsSwiper) testimonialsSwiper.style.display = 'none';
+    } else {
+        // Show swiper on mobile
+        if (testimonialsGrid) testimonialsGrid.style.display = 'none';
+        if (testimonialsSwiper) testimonialsSwiper.style.display = 'block';
+    }
+}
+
+// Handle responsive quick stats
+function handleResponsiveQuickStats() {
+    const quickStatsGrid = document.querySelector('.quick-stats');
+    const quickStatsSwiper = document.querySelector('.stats-swiper');
+    const windowWidth = window.innerWidth;
+    
+    if (windowWidth >= 768) {
+        // Show grid on tablet/desktop
+        if (quickStatsGrid) quickStatsGrid.style.display = 'grid';
+        if (quickStatsSwiper) quickStatsSwiper.style.display = 'none';
+    } else {
+        // Show swiper on mobile
+        if (quickStatsGrid) quickStatsGrid.style.display = 'none';
+        if (quickStatsSwiper) quickStatsSwiper.style.display = 'block';
+    }
+}
+
+// Debounce function for resize events
+function debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+        const later = () => {
+            clearTimeout(timeout);
+            func(...args);
+        };
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+    };
+}
+
+// Update all responsive elements
+function updateResponsiveElements() {
+    handleResponsiveNav();
+    handleResponsiveVideo();
+    handleResponsiveTestimonials();
+    handleResponsiveQuickStats();
+}
+
+// Initialize on load
+document.addEventListener('DOMContentLoaded', function() {
+    updateResponsiveElements();
+    
+    // Update on resize
+    window.addEventListener('resize', debounce(updateResponsiveElements, 250));
+    
+    // Handle desktop navigation clicks
+    document.querySelectorAll('.desktop-nav .nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+            
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // Update active state
+                document.querySelectorAll('.desktop-nav .nav-link').forEach(l => {
+                    l.classList.remove('active');
+                });
+                this.classList.add('active');
+            }
+        });
+    });
+    
+    // Handle scroll for desktop navigation active state
+    window.addEventListener('scroll', debounce(function() {
+        const windowWidth = window.innerWidth;
+        
+        if (windowWidth >= 1024) {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.desktop-nav .nav-link');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = section.id;
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+    }, 100));
+});
+
+// Add desktop-specific animations
+function initDesktopAnimations() {
+    if (window.innerWidth >= 1024) {
+        // Add parallax effect to video background
+        window.addEventListener('scroll', function() {
+            const scrolled = window.pageYOffset;
+            const videoBg = document.querySelector('.video-background video');
+            
+            if (videoBg) {
+                videoBg.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+        
+        // Add hover effects to cards
+        document.querySelectorAll('.benefit-card, .testimonial-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+    }
+}
+
