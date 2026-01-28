@@ -58,6 +58,25 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ===== Add Mobile Chat Button =====
+    function addMobileChatButton() {
+        const navLinks = document.getElementById('navLinks');
+        if (navLinks) {
+            const mobileChatBtn = document.createElement('a');
+            mobileChatBtn.href = 'https://chat-3zot.onrender.com';
+            mobileChatBtn.target = '_blank';
+            mobileChatBtn.rel = 'noopener';
+            mobileChatBtn.className = 'chat-support-btn mobile-chat-btn';
+            mobileChatBtn.innerHTML = `
+                <i class="fas fa-headset"></i>
+                <span>Chat with Customer Support</span>
+            `;
+            navLinks.appendChild(mobileChatBtn);
+        }
+    }
+    
+    addMobileChatButton();
+
     // ===== Update active nav link on scroll =====
     function updateActiveNavLink() {
         const sections = document.querySelectorAll('section[id]');
@@ -86,8 +105,8 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('scroll', updateActiveNavLink);
     updateActiveNavLink(); // Initial call
 
-    // ===== ROI Calculator Functionality =====
-    function initROICalculator() {
+    // ===== Earnings Calculator Functionality =====
+    function initCalculator() {
         const dailyTasksSlider = document.getElementById('dailyTasks');
         const gameEarningsSlider = document.getElementById('gameEarnings');
         const referralsSlider = document.getElementById('referrals');
@@ -96,7 +115,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const gameEarningsElement = document.getElementById('gameEarningsResult');
         const referralEarningsElement = document.getElementById('referralEarnings');
         const totalEarningsElement = document.getElementById('totalEarnings');
-        const roiPercentageElement = document.getElementById('roiPercentage');
         
         const dailyTasksValue = document.getElementById('dailyTasksValue');
         const gameEarningsValue = document.getElementById('gameEarningsValue');
@@ -117,16 +135,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const referralEarnings = referrals * 7500; // ₦7,500 per referral
             const totalEarnings = tasksEarnings + gameEarningsTotal + referralEarnings;
             
-            // Calculate ROI percentage
-            const investment = 8000;
-            const roi = totalEarnings > 0 ? ((totalEarnings - investment) / investment) * 100 : 0;
-            
             // Update display values
             tasksEarningsElement.textContent = formatCurrency(tasksEarnings);
             gameEarningsElement.textContent = formatCurrency(gameEarningsTotal);
             referralEarningsElement.textContent = formatCurrency(referralEarnings);
             totalEarningsElement.textContent = formatCurrency(totalEarnings);
-            roiPercentageElement.textContent = Math.round(roi) + '%';
             
             // Update slider value displays
             dailyTasksValue.textContent = dailyTasks + ' days';
@@ -179,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    initROICalculator();
+    initCalculator();
 
     // ===== FAQ Accordion =====
     function initFAQAccordion() {
@@ -282,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, observerOptions);
         
         // Observe elements to animate
-        document.querySelectorAll('.value-card, .testimonial-card, .calculator-container, .faq-item').forEach(el => {
+        document.querySelectorAll('.value-card, .testimonial-card, .calculator-container, .faq-item, .earning-item').forEach(el => {
             observer.observe(el);
         });
         
@@ -376,51 +389,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     handleVideoFallback();
-
-    // ===== Form validation (if forms added later) =====
-    const newsletterForm = document.querySelector('.newsletter-form');
-    if (newsletterForm) {
-        newsletterForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            const email = this.querySelector('input[type="email"]').value;
-            
-            if (email && email.includes('@') && email.includes('.')) {
-                // Show success message
-                showNotification('Thank you for subscribing! You will receive investment updates.', 'success');
-                this.reset();
-            } else {
-                showNotification('Please enter a valid email address.', 'error');
-            }
-        });
-    }
-
-    // ===== Notification function =====
-    function showNotification(message, type = 'info') {
-        const notification = document.createElement('div');
-        notification.className = `notification notification-${type}`;
-        notification.innerHTML = `
-            <i class="fas fa-${type === 'success' ? 'check-circle' : type === 'error' ? 'exclamation-circle' : 'info-circle'}"></i>
-            <span>${message}</span>
-            <button class="notification-close"><i class="fas fa-times"></i></button>
-        `;
-        
-        document.body.appendChild(notification);
-        
-        // Show notification
-        setTimeout(() => notification.classList.add('show'), 10);
-        
-        // Auto remove after 5 seconds
-        setTimeout(() => {
-            notification.classList.remove('show');
-            setTimeout(() => notification.remove(), 300);
-        }, 5000);
-        
-        // Close button
-        notification.querySelector('.notification-close').addEventListener('click', function() {
-            notification.classList.remove('show');
-            setTimeout(() => notification.remove(), 300);
-        });
-    }
 
     // ===== Performance optimization =====
     // Debounce function for scroll/resize events
