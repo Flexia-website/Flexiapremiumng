@@ -128,6 +128,56 @@ a {
     transition: all 0.3s ease;
 }
 
+/* ===== Chat Support Button ===== */
+.chat-support-btn {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-lg);
+    background: var(--gradient-accent);
+    color: var(--light);
+    border: none;
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.chat-support-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.chat-support-btn i {
+    font-size: 1rem;
+}
+
+/* Desktop chat button in nav */
+.nav-links .chat-support-btn {
+    margin-left: var(--space-sm);
+}
+
+/* Mobile chat button */
+.mobile-chat-btn {
+    display: none;
+    margin-top: var(--space-md);
+    width: 100%;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .nav-links .chat-support-btn {
+        display: none;
+    }
+    
+    .mobile-chat-btn {
+        display: flex;
+    }
+}
+
 /* ===== Buttons ===== */
 .btn {
     display: inline-flex;
@@ -351,6 +401,7 @@ a {
     z-index: 2;
     text-align: center;
     width: 100%;
+    padding-top: var(--space-xl);
 }
 
 .hero-logo {
@@ -493,6 +544,7 @@ a {
     gap: var(--space-xl);
     justify-content: center;
     flex-wrap: wrap;
+    margin-top: var(--space-xl);
 }
 
 .trust-item {
@@ -518,12 +570,12 @@ a {
 
 /* ===== Sections Common Styles ===== */
 .section {
-    padding: var(--space-3xl) 0;
+    padding: var(--space-2xl) 0;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-xl);
 }
 
 .section-subtitle {
@@ -550,6 +602,9 @@ a {
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .value-card::before {
@@ -589,6 +644,11 @@ a {
 
 .value-card h3 {
     color: var(--light);
+    margin-bottom: var(--space-md);
+}
+
+.value-card p {
+    flex-grow: 1;
     margin-bottom: var(--space-md);
 }
 
@@ -633,21 +693,44 @@ a {
 }
 
 /* ===== Calculator Section ===== */
+.calculator-section {
+    background: var(--dark);
+}
+
+.calculator-section .section-header h2 {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
 .calculator-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: var(--space-2xl);
     background: var(--dark-light);
     border: 1px solid rgba(108, 99, 255, 0.2);
     border-radius: var(--radius-lg);
     padding: var(--space-2xl);
     box-shadow: var(--shadow-lg);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .calculator-inputs {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+@media (max-width: 1024px) {
+    .calculator-inputs {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .calculator-inputs {
+        grid-template-columns: 1fr;
+    }
 }
 
 .input-group {
@@ -709,11 +792,18 @@ a {
     font-size: 1.1rem;
 }
 
+.input-help {
+    font-size: 0.85rem;
+    color: var(--gray-300);
+    margin-top: var(--space-xs);
+    line-height: 1.4;
+}
+
 .calculator-results {
     background: var(--gradient-dark);
     border-radius: var(--radius-lg);
     padding: var(--space-xl);
-    box-shadow: var(--shadow-inner);
+    text-align: center;
 }
 
 .results-header {
@@ -724,78 +814,64 @@ a {
 }
 
 .earnings-breakdown {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
     margin-bottom: var(--space-xl);
 }
 
+@media (max-width: 768px) {
+    .earnings-breakdown {
+        grid-template-columns: 1fr;
+    }
+}
+
 .earning-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: var(--space-md);
     background: rgba(255, 255, 255, 0.05);
     border-radius: var(--radius-md);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
     transition: all 0.3s ease;
 }
 
 .earning-item:hover {
     background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
 }
 
-.earning-item.total {
-    background: rgba(108, 99, 255, 0.1);
-    border: 1px solid var(--primary);
-}
-
-.earning-amount {
-    font-weight: 700;
-    color: var(--accent);
-    font-size: 1.2rem;
-}
-
-.total-amount {
-    font-size: 1.8rem;
-    color: var(--accent);
-    font-weight: 800;
-}
-
-.roi-display {
-    text-align: center;
-    padding: var(--space-lg);
-    background: rgba(0, 212, 170, 0.1);
-    border-radius: var(--radius-lg);
-    border: 1px solid rgba(0, 212, 170, 0.2);
-}
-
-.roi-percentage {
-    margin-bottom: var(--space-md);
-}
-
-.roi-percentage span:first-child {
-    display: block;
-    font-size: 3rem;
-    font-weight: 800;
-    font-family: var(--font-heading);
-    color: var(--accent);
-    margin-bottom: var(--space-xs);
-}
-
-.roi-percentage span:last-child {
+.earning-item span:first-child {
     font-size: 0.9rem;
     color: var(--gray-300);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-.roi-note {
-    color: var(--gray-200);
-    font-size: 1.1rem;
+.earning-amount {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--accent);
+    font-family: var(--font-heading);
 }
 
-.roi-note strong {
-    color: var(--light);
+.earning-item.total {
+    grid-column: 1 / -1;
+    background: rgba(108, 99, 255, 0.1);
+    border: 2px solid var(--primary);
+    padding: var(--space-xl);
+}
+
+.earning-item.total .earning-amount {
+    font-size: 2.5rem;
+}
+
+.calculator-note {
+    color: var(--gray-200);
+    font-size: 1rem;
+    margin-top: var(--space-lg);
+    padding-top: var(--space-lg);
+    border-top: 1px solid rgba(108, 99, 255, 0.2);
 }
 
 /* ===== Testimonials Section ===== */
@@ -1374,15 +1450,6 @@ a {
     .value-grid,
     .testimonials-grid {
         grid-template-columns: 1fr;
-    }
-    
-    .calculator-container {
-        grid-template-columns: 1fr;
-    }
-    
-    .register-highlights {
-        flex-direction: column;
-        align-items: center;
     }
     
     .back-to-top {
