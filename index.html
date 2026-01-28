@@ -14,12 +14,12 @@
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://flexiapremium.onrender.com/images/logo/flexia-logo.png">
     
-  <!-- Favicon Section (Updated) -->
-<link rel="icon" type="image/png" sizes="32x32" href="images/logo/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="64x64" href="images/logo/favicon-64x64.png">
-<link rel="icon" type="image/png" sizes="512x512" href="images/logo/favicon-512x512.png">
-<link rel="apple-touch-icon" sizes="180x180" href="images/logo/apple-touch-icon.png">
-<link rel="shortcut icon" href="images/logo/favicon-32x32.png">
+    <!-- Favicon Section -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/logo/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="64x64" href="images/logo/favicon-64x64.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="images/logo/favicon-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/logo/apple-touch-icon.png">
+    <link rel="shortcut icon" href="images/logo/favicon-32x32.png">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -101,9 +101,16 @@
                 <div class="nav-links" id="navLinks">
                     <a href="#home" class="nav-link active">Home</a>
                     <a href="#value" class="nav-link">Investment Value</a>
-                    <a href="#calculator" class="nav-link">ROI Calculator</a>
+                    <a href="#calculator" class="nav-link">Earnings Calculator</a>
                     <a href="#testimonials" class="nav-link">Success Stories</a>
                     <a href="#faq" class="nav-link">FAQ</a>
+                    
+                    <!-- Chat Support Button -->
+                    <a href="https://chat-3zot.onrender.com" class="chat-support-btn" target="_blank" rel="noopener">
+                        <i class="fas fa-headset"></i>
+                        <span>Chat Support</span>
+                    </a>
+                    
                     <a href="https://flexiapremium.onrender.com/register" class="nav-link btn-register" target="_blank">Register Now</a>
                 </div>
             </div>
@@ -117,7 +124,6 @@
             <video autoplay muted loop playsinline class="hero-video" poster="images/background.jpg" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
                 <source src="videos/hero-bg.mp4" type="video/mp4">
                 <source src="videos/hero-bg.webm" type="video/webm">
-                <!-- Fallback Image -->
             </video>
             <img src="images/background.jpg" alt="Hero Background" class="hero-fallback" style="display:none;">
             <div class="hero-overlay"></div>
@@ -168,7 +174,7 @@
                     </a>
                     <a href="#calculator" class="btn btn-secondary">
                         <i class="fas fa-calculator"></i>
-                        <span>Calculate ROI</span>
+                        <span>Calculate Earnings</span>
                     </a>
                 </div>
                 
@@ -240,12 +246,12 @@
         </div>
     </section>
 
-    <!-- ROI Calculator Section -->
+    <!-- Earnings Calculator Section -->
     <section class="section calculator-section" id="calculator">
         <div class="container">
             <div class="section-header">
                 <h2>Calculate Your Potential Earnings</h2>
-                <p class="section-subtitle">See how your investment multiplies monthly</p>
+                <p class="section-subtitle">See how much you can earn monthly with Flexia Premium</p>
             </div>
             
             <div class="calculator-container">
@@ -257,6 +263,7 @@
                         </label>
                         <input type="range" id="dailyTasks" min="0" max="30" value="25" step="1">
                         <span class="input-value" id="dailyTasksValue">25 days</span>
+                        <p class="input-help">Earn ₦150 daily from TikTok tasks</p>
                     </div>
                     
                     <div class="input-group">
@@ -266,6 +273,7 @@
                         </label>
                         <input type="range" id="gameEarnings" min="0" max="100" value="50" step="5">
                         <span class="input-value" id="gameEarningsValue">50 apples/day</span>
+                        <p class="input-help">₦200 per apple in Snake Master</p>
                     </div>
                     
                     <div class="input-group">
@@ -275,40 +283,41 @@
                         </label>
                         <input type="range" id="referrals" min="0" max="20" value="3" step="1">
                         <span class="input-value" id="referralsValue">3 referrals</span>
+                        <p class="input-help">₦7,500 per successful referral</p>
                     </div>
                 </div>
                 
                 <div class="calculator-results">
                     <div class="results-header">
-                        <h3>Your Monthly Earnings</h3>
+                        <h3>Your Monthly Earnings Breakdown</h3>
                     </div>
                     
                     <div class="earnings-breakdown">
                         <div class="earning-item">
-                            <span>Daily Tasks:</span>
+                            <span>Daily Tasks</span>
                             <span class="earning-amount" id="tasksEarnings">₦3,750</span>
                         </div>
+                        
                         <div class="earning-item">
-                            <span>Game Earnings:</span>
+                            <span>Game Earnings</span>
                             <span class="earning-amount" id="gameEarningsResult">₦30,000</span>
                         </div>
+                        
                         <div class="earning-item">
-                            <span>Referral Bonuses:</span>
+                            <span>Referral Bonuses</span>
                             <span class="earning-amount" id="referralEarnings">₦22,500</span>
                         </div>
+                        
                         <div class="earning-item total">
-                            <span>Total Monthly:</span>
+                            <span>Total Monthly Earnings</span>
                             <span class="earning-amount total-amount" id="totalEarnings">₦56,250</span>
                         </div>
                     </div>
                     
-                    <div class="roi-display">
-                        <div class="roi-percentage">
-                            <span id="roiPercentage">603%</span>
-                            <span>Monthly ROI</span>
-                        </div>
-                        <p class="roi-note">Your ₦8,000 investment could return <strong>₦56,250 monthly</strong></p>
-                    </div>
+                    <p class="calculator-note">
+                        <i class="fas fa-lightbulb"></i>
+                        Start with just ₦8,000 investment. Your actual earnings may vary based on participation.
+                    </p>
                 </div>
             </div>
         </div>
@@ -519,9 +528,10 @@
                     <div class="footer-links">
                         <a href="#home">Home</a>
                         <a href="#value">Investment Value</a>
-                        <a href="#calculator">ROI Calculator</a>
+                        <a href="#calculator">Earnings Calculator</a>
                         <a href="#testimonials">Success Stories</a>
                         <a href="#faq">FAQ</a>
+                        <a href="https://chat-3zot.onrender.com" target="_blank">Chat Support</a>
                         <a href="https://flexiapremium.onrender.com/register" target="_blank">Register</a>
                     </div>
                 </div>
