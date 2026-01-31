@@ -6,12 +6,23 @@
     
     <!-- SEO Meta Tags -->
     <title>Flexia Premium NG - Invest ₦8,000, Earn ₦50,000+ Monthly</title>
-    <meta name="description" content="Join Flexia Premium NG 2026: Invest ₦8,000 registration and earn ₦50,000+ monthly through gaming, referrals, and daily tasks.">
+    <meta name="description" content="Join Flexia Premium NG 2026: Invest ₦8,000 registration and earn ₦50,000+ monthly through gaming, referrals, and daily tasks. Nigeria's most trusted gaming investment platform.">
+    <meta name="keywords" content="Flexia Premium, gaming investment, earn money online Nigeria, ₦8,000 investment, ₦50,000 monthly, online earnings Nigeria, gaming platform, investment platform, make money online, side hustle Nigeria, passive income, referral program, daily tasks, gaming profits">
+    <meta name="author" content="Flexia Premium NG">
+    <meta name="robots" content="index, follow">
     
     <!-- Open Graph Tags -->
-    <meta property="og:title" content="Flexia Premium NG 2026">
-    <meta property="og:description" content="Premium gaming investment platform with proven ROI">
+    <meta property="og:title" content="Flexia Premium NG 2026 - Invest ₦8,000, Earn ₦50,000+ Monthly">
+    <meta property="og:description" content="Premium gaming investment platform with proven ROI. Join thousands earning ₦50,000+ monthly with ₦8,000 investment.">
     <meta property="og:type" content="website">
+    <meta property="og:image" content="https://flexiapremium.onrender.com/images/logo/flexia-logo.png">
+    <meta property="og:url" content="https://flexiapremium.onrender.com">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Flexia Premium NG 2026">
+    <meta name="twitter:description" content="Invest ₦8,000, Earn ₦50,000+ Monthly with Nigeria's #1 Gaming Investment Platform">
+    <meta name="twitter:image" content="https://flexiapremium.onrender.com/images/logo/flexia-logo.png">
     
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -21,7 +32,7 @@
     
     <!-- Main CSS -->
     <style>
-        /* All CSS will be inline for portability */
+        /* ===== CSS Reset & Base Styles ===== */
         * {
             margin: 0;
             padding: 0;
@@ -48,6 +59,20 @@
             overflow-x: hidden;
         }
         
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 101, 132, 0.1) 0%, transparent 50%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        
         .container {
             width: 100%;
             max-width: 1280px;
@@ -55,7 +80,7 @@
             padding: 0 20px;
         }
         
-        /* Loading Screen */
+        /* ===== Loading Screen ===== */
         .loading-screen {
             position: fixed;
             top: 0;
@@ -85,7 +110,7 @@
             to { transform: rotate(360deg); }
         }
         
-        /* Navigation */
+        /* ===== Navigation ===== */
         .navbar {
             position: fixed;
             top: 0;
@@ -114,13 +139,7 @@
             width: 40px;
             height: 40px;
             border-radius: 12px;
-            background: linear-gradient(135deg, #6C63FF, #554FD8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
+            object-fit: contain;
         }
         
         .logo-text {
@@ -175,7 +194,7 @@
             transform: translateY(-3px);
         }
         
-        /* Hero Section */
+        /* ===== Hero Section ===== */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -185,31 +204,75 @@
             overflow: hidden;
         }
         
-        .hero::before {
-            content: '';
+        .hero-bg {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(108, 99, 255, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 101, 132, 0.1) 0%, transparent 50%);
+            width: 100%;
+            height: 100%;
             z-index: -1;
         }
         
+        .hero-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            filter: brightness(1.3) contrast(1.2);
+        }
+        
+        .hero-fallback {
+            display: none;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, 
+                rgba(10, 10, 26, 0.8) 0%,
+                rgba(108, 99, 255, 0.3) 50%,
+                rgba(10, 10, 26, 0.8) 100%);
+        }
+        
         .hero-content {
+            position: relative;
+            z-index: 2;
             text-align: center;
             width: 100%;
         }
         
-        .hero-badge {
-            display: inline-block;
-            padding: 12px 30px;
+        .hero-logo {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .hero-logo-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            object-fit: contain;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .hero-logo-badge {
             background: rgba(10, 10, 26, 0.8);
             border: 2px solid var(--primary);
             border-radius: 50px;
-            margin-bottom: 30px;
+            padding: 12px 30px;
             box-shadow: 0 4px 20px rgba(108, 99, 255, 0.2);
         }
         
@@ -219,6 +282,13 @@
             font-weight: 800;
             color: var(--accent);
             font-family: 'Montserrat', sans-serif;
+        }
+        
+        .badge-text {
+            font-size: 0.9rem;
+            color: var(--gray-300);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
         .hero-title {
@@ -258,6 +328,12 @@
             border-radius: 15px;
             padding: 20px;
             text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
         }
         
         .stat-number {
@@ -313,7 +389,7 @@
             background: rgba(108, 99, 255, 0.1);
         }
         
-        /* Features Section */
+        /* ===== Features Section ===== */
         .features {
             padding: 80px 0;
             background: var(--dark-light);
@@ -391,7 +467,7 @@
             margin-top: 10px;
         }
         
-        /* Testimonials */
+        /* ===== Testimonials ===== */
         .testimonials {
             padding: 80px 0;
         }
@@ -426,12 +502,8 @@
             width: 50px;
             height: 50px;
             border-radius: 50%;
-            background: linear-gradient(135deg, #6C63FF, #FF6584);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
+            object-fit: cover;
+            border: 3px solid var(--primary);
         }
         
         .testimonial-info h4 {
@@ -448,6 +520,8 @@
             color: var(--gray-200);
             font-style: italic;
             margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid var(--primary);
         }
         
         .testimonial-earnings {
@@ -464,7 +538,7 @@
             color: var(--accent);
         }
         
-        /* FAQ */
+        /* ===== FAQ ===== */
         .faq {
             padding: 80px 0;
             background: var(--dark-light);
@@ -509,7 +583,7 @@
             padding-bottom: 20px;
         }
         
-        /* CTA Section */
+        /* ===== CTA Section ===== */
         .cta-section {
             padding: 80px 0;
             text-align: center;
@@ -567,7 +641,7 @@
             50% { opacity: 0.7; }
         }
         
-        /* Footer */
+        /* ===== Footer ===== */
         .footer {
             background: #050510;
             padding: 60px 0 30px;
@@ -588,9 +662,10 @@
             margin-bottom: 20px;
         }
         
-        .footer-logo .logo {
-            width: 40px;
-            height: 40px;
+        .footer-logo img {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
         }
         
         .footer-links {
@@ -616,7 +691,7 @@
             font-size: 0.9rem;
         }
         
-        /* Back to Top */
+        /* ===== Back to Top ===== */
         .back-to-top {
             position: fixed;
             bottom: 30px;
@@ -647,7 +722,7 @@
             transform: translateY(-5px);
         }
         
-        /* Mobile Styles */
+        /* ===== Mobile Styles ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0 15px;
@@ -708,6 +783,11 @@
             .price {
                 font-size: 3rem;
             }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -722,6 +802,10 @@
             .feature-card,
             .testimonial-card {
                 padding: 20px;
+            }
+            
+            .price {
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -739,7 +823,7 @@
             <div class="nav-content">
                 <!-- Logo -->
                 <div class="logo-container">
-                    <div class="logo">FP</div>
+                    <img src="https://flexiapremium.onrender.com/images/logo/flexia-logo.png" alt="Flexia Premium NG" class="logo">
                     <span class="logo-text">FLEXIA PREMIUM</span>
                 </div>
                 
@@ -769,12 +853,25 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
+        <!-- Background Video -->
+        <div class="hero-bg">
+            <video autoplay muted loop playsinline class="hero-video">
+                <source src="videos/hero-bg.mp4" type="video/mp4">
+                <source src="videos/hero-bg.webm" type="video/webm">
+            </video>
+            <img src="images/background.jpg" alt="Hero Background" class="hero-fallback">
+            <div class="hero-overlay"></div>
+        </div>
+        
         <div class="container">
             <div class="hero-content">
-                <!-- Hero Badge -->
-                <div class="hero-badge">
-                    <span class="badge-amount">₦8,000</span>
-                    <span style="color: var(--gray-300); font-size: 0.9rem;">One-time Investment</span>
+                <!-- Hero Logo -->
+                <div class="hero-logo">
+                    <img src="https://flexiapremium.onrender.com/images/logo/flexia-logo.png" alt="Flexia Premium Logo" class="hero-logo-img">
+                    <div class="hero-logo-badge">
+                        <span class="badge-amount">₦8,000</span>
+                        <span class="badge-text">Premium Registration</span>
+                    </div>
                 </div>
                 
                 <!-- Hero Text -->
@@ -868,7 +965,7 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <div class="testimonial-avatar">EC</div>
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emeka" alt="Emeka C." class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Emeka C.</h4>
                             <span class="testimonial-role">Businessman, Lagos</span>
@@ -885,7 +982,7 @@
                 
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <div class="testimonial-avatar">CO</div>
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Chioma" alt="Chioma O." class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Chioma O.</h4>
                             <span class="testimonial-role">Student, UNILAG</span>
@@ -902,7 +999,7 @@
                 
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <div class="testimonial-avatar">TA</div>
+                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Tunde" alt="Tunde A." class="testimonial-avatar">
                         <div class="testimonial-info">
                             <h4>Tunde A.</h4>
                             <span class="testimonial-role">Entrepreneur, PH</span>
@@ -1005,14 +1102,14 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">
-                        <div class="logo">FP</div>
+                        <img src="https://flexiapremium.onrender.com/images/logo/flexia-logo.png" alt="Flexia Premium">
                         <div>
                             <h4 style="color: white; margin-bottom: 5px;">FLEXIA PREMIUM NG</h4>
                             <p style="color: var(--gray-300); font-size: 0.9rem;">Premium Gaming Investment Platform</p>
                         </div>
                     </div>
                     <p style="color: var(--gray-300); font-size: 0.9rem;">
-                        Your ₦8,000 investment gateway to financial freedom.
+                        Your ₦8,000 investment gateway to financial freedom through gaming.
                     </p>
                 </div>
                 
@@ -1060,7 +1157,7 @@
                 setTimeout(() => {
                     document.getElementById('loadingScreen').style.display = 'none';
                 }, 500);
-            }, 500);
+            }, 1000);
             
             // Mobile Menu Toggle
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1209,6 +1306,25 @@
             
             window.addEventListener('scroll', updateActiveNavLink);
             updateActiveNavLink(); // Initial call
+            
+            // Video fallback handling
+            const heroVideo = document.querySelector('.hero-video');
+            const heroFallback = document.querySelector('.hero-fallback');
+            
+            if (heroVideo && heroFallback) {
+                heroVideo.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    heroFallback.style.display = 'block';
+                });
+                
+                // Check if video can play
+                if (heroVideo.readyState >= 3) {
+                    heroVideo.play().catch(() => {
+                        heroVideo.style.display = 'none';
+                        heroFallback.style.display = 'block';
+                    });
+                }
+            }
             
             console.log('Flexia Premium NG loaded successfully');
         });
