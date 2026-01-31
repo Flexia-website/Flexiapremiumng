@@ -7,7 +7,7 @@
     <!-- SEO Meta Tags -->
     <title>Flexia Premium NG - Invest ₦8,000, Earn ₦50,000+ Monthly</title>
     <meta name="description" content="Join Flexia Premium NG 2026: Invest ₦8,000 registration and earn ₦50,000+ monthly through gaming, referrals, and daily tasks. Nigeria's most trusted gaming investment platform.">
-    <meta name="keywords" content="Flexia Premium, gaming investment, earn money online Nigeria, ₦8,000 investment, ₦50,000 monthly, online earnings Nigeria, gaming platform, investment platform, make money online, side hustle Nigeria, passive income, referral program, daily tasks, gaming profits">
+    <meta name="keywords" content="Flexia Premium,flexia earning platform, gaming investment, earn money online Nigeria, ₦8,000 investment, ₦50,000 monthly, online earnings Nigeria, gaming platform, investment platform, make money online, side hustle Nigeria, passive income, referral program, daily tasks, gaming profits">
     <meta name="author" content="Flexia Premium NG">
     <meta name="robots" content="index, follow">
     
@@ -499,8 +499,8 @@
         }
         
         .testimonial-avatar {
-            width: 50px;
-            height: 50px;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
             object-fit: cover;
             border: 3px solid var(--primary);
@@ -823,7 +823,7 @@
             <div class="nav-content">
                 <!-- Logo -->
                 <div class="logo-container">
-                    <img src="https://flexiapremium.onrender.com/images/logo/flexia-logo.png" alt="Flexia Premium NG" class="logo">
+                    <img src="images/logo/flexia-logo.png" alt="Flexia Premium NG" class="logo">
                     <span class="logo-text">FLEXIA PREMIUM</span>
                 </div>
                 
@@ -867,7 +867,7 @@
             <div class="hero-content">
                 <!-- Hero Logo -->
                 <div class="hero-logo">
-                    <img src="https://flexiapremium.onrender.com/images/logo/flexia-logo.png" alt="Flexia Premium Logo" class="hero-logo-img">
+                    <img src="images/logo/flexia-logo.png" alt="Flexia Premium Logo" class="hero-logo-img">
                     <div class="hero-logo-badge">
                         <span class="badge-amount">₦8,000</span>
                         <span class="badge-text">Premium Registration</span>
@@ -965,7 +965,8 @@
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emeka" alt="Emeka C." class="testimonial-avatar">
+                        <!-- Avatar from your local directory -->
+                        <img src="images/avatars/avatar1.jpg" alt="Emeka C." class="testimonial-avatar" onerror="this.onerror=null; this.src='images/avatars/avatar1.jpg'">
                         <div class="testimonial-info">
                             <h4>Emeka C.</h4>
                             <span class="testimonial-role">Businessman, Lagos</span>
@@ -982,7 +983,8 @@
                 
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Chioma" alt="Chioma O." class="testimonial-avatar">
+                        <!-- Avatar from your local directory -->
+                        <img src="images/avatars/avatar2.jpg" alt="Chioma O." class="testimonial-avatar" onerror="this.onerror=null; this.src='images/avatars/avatar2.jpg'">
                         <div class="testimonial-info">
                             <h4>Chioma O.</h4>
                             <span class="testimonial-role">Student, UNILAG</span>
@@ -999,7 +1001,8 @@
                 
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Tunde" alt="Tunde A." class="testimonial-avatar">
+                        <!-- Avatar from your local directory -->
+                        <img src="images/avatars/avatar3.jpg" alt="Tunde A." class="testimonial-avatar" onerror="this.onerror=null; this.src='images/avatars/avatar3.jpg'">
                         <div class="testimonial-info">
                             <h4>Tunde A.</h4>
                             <span class="testimonial-role">Entrepreneur, PH</span>
@@ -1102,7 +1105,7 @@
             <div class="footer-content">
                 <div>
                     <div class="footer-logo">
-                        <img src="https://flexiapremium.onrender.com/images/logo/flexia-logo.png" alt="Flexia Premium">
+                        <img src="images/logo/flexia-logo-white.png" alt="Flexia Premium" onerror="this.onerror=null; this.src='images/logo/flexia-logo.png'">
                         <div>
                             <h4 style="color: white; margin-bottom: 5px;">FLEXIA PREMIUM NG</h4>
                             <p style="color: var(--gray-300); font-size: 0.9rem;">Premium Gaming Investment Platform</p>
@@ -1325,6 +1328,33 @@
                     });
                 }
             }
+            
+            // Image error handling for local images
+            const localImages = document.querySelectorAll('img[src^="images/"]');
+            localImages.forEach(img => {
+                img.addEventListener('error', function() {
+                    console.log(`Image failed to load: ${this.src}`);
+                    
+                    // Try alternative paths
+                    if (this.classList.contains('logo') || this.classList.contains('hero-logo-img')) {
+                        // Try logo fallback
+                        this.src = 'images/logo/flexia-logo.png';
+                    } else if (this.classList.contains('testimonial-avatar')) {
+                        // Try avatar fallbacks
+                        const src = this.src;
+                        if (src.includes('avatar1')) {
+                            this.src = 'images/avatars/avatar1.jpg';
+                        } else if (src.includes('avatar2')) {
+                            this.src = 'images/avatars/avatar2.jpg';
+                        } else if (src.includes('avatar3')) {
+                            this.src = 'images/avatars/avatar3.jpg';
+                        } else {
+                            // Fallback to generic avatar
+                            this.src = 'images/avatars/avatar1.jpg';
+                        }
+                    }
+                });
+            });
             
             console.log('Flexia Premium NG loaded successfully');
         });
