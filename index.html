@@ -30,6 +30,9 @@
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
+    <!-- Chart.js for IoT Dashboard -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <!-- Main CSS -->
     <style>
         /* ===== CSS Reset & Base Styles ===== */
@@ -44,6 +47,7 @@
             --primary-dark: #554FD8;
             --secondary: #FF6584;
             --accent: #00D4AA;
+            --iot-green: #00FF88;
             --dark: #0A0A1A;
             --dark-light: #1A1A2E;
             --light: #FFFFFF;
@@ -192,6 +196,251 @@
         
         .chat-support-btn:hover {
             transform: translateY(-3px);
+        }
+        
+        /* ===== IoT Modal ===== */
+        .iot-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(5, 5, 16, 0.95);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .iot-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .iot-modal-content {
+            background: linear-gradient(135deg, var(--dark-light), #101025);
+            border-radius: 20px;
+            width: 90%;
+            max-width: 1200px;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 50px rgba(108, 99, 255, 0.3);
+            position: relative;
+        }
+        
+        .iot-modal-header {
+            padding: 30px 40px 20px;
+            border-bottom: 1px solid rgba(108, 99, 255, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .iot-modal-title {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--iot-green), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .iot-modal-close {
+            background: none;
+            border: none;
+            color: var(--gray-300);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .iot-modal-close:hover {
+            color: white;
+        }
+        
+        .iot-modal-body {
+            padding: 30px 40px;
+        }
+        
+        .iot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .iot-card {
+            background: rgba(10, 10, 26, 0.5);
+            border: 1px solid rgba(0, 255, 136, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            transition: all 0.3s ease;
+        }
+        
+        .iot-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--iot-green);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.1);
+        }
+        
+        .iot-card-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .iot-card-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 212, 170, 0.1));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--iot-green);
+        }
+        
+        .iot-card-title {
+            font-size: 1.1rem;
+            color: white;
+        }
+        
+        .iot-card-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--iot-green);
+            margin-bottom: 10px;
+        }
+        
+        .iot-card-label {
+            color: var(--gray-300);
+            font-size: 0.9rem;
+        }
+        
+        .iot-chart-container {
+            background: rgba(10, 10, 26, 0.5);
+            border: 1px solid rgba(108, 99, 255, 0.2);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .iot-chart-title {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .iot-controls {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .iot-btn {
+            padding: 12px 25px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .iot-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.3);
+        }
+        
+        .iot-btn-secondary {
+            background: rgba(108, 99, 255, 0.1);
+            border: 1px solid var(--primary);
+        }
+        
+        .iot-device-list {
+            margin-top: 30px;
+        }
+        
+        .device-item {
+            background: rgba(10, 10, 26, 0.5);
+            border: 1px solid rgba(108, 99, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .device-info h4 {
+            color: white;
+            margin-bottom: 5px;
+        }
+        
+        .device-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--iot-green);
+        }
+        
+        .status-indicator.offline {
+            background: #FF6584;
+        }
+        
+        .device-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        /* ===== APK Download Button Styles ===== */
+        .apk-download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 25px;
+            background: linear-gradient(135deg, #00D4AA, #00A884);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 212, 170, 0.3);
+        }
+        
+        .apk-download-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 212, 170, 0.4);
+            background: linear-gradient(135deg, #00FF88, #00D4AA);
+        }
+        
+        .apk-download-section {
+            text-align: center;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(10, 10, 26, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(0, 212, 170, 0.2);
+        }
+        
+        .apk-info {
+            color: var(--gray-300);
+            font-size: 0.9rem;
+            margin-top: 10px;
         }
         
         /* ===== Hero Section ===== */
@@ -775,6 +1024,20 @@
                 grid-template-columns: 1fr;
             }
             
+            .iot-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .iot-modal-content {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            .iot-modal-header,
+            .iot-modal-body {
+                padding: 20px;
+            }
+            
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 30px;
@@ -807,6 +1070,15 @@
             .price {
                 font-size: 2.5rem;
             }
+            
+            .iot-card-value {
+                font-size: 1.5rem;
+            }
+            
+            .apk-download-btn {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -815,6 +1087,122 @@
     <div class="loading-screen" id="loadingScreen">
         <div class="loader"></div>
         <p>Loading Flexia Premium...</p>
+    </div>
+
+    <!-- IoT Dashboard Modal -->
+    <div class="iot-modal" id="iotModal">
+        <div class="iot-modal-content">
+            <div class="iot-modal-header">
+                <h2 class="iot-modal-title">
+                    <i class="fas fa-satellite-dish"></i> FLEXIA IoT DASHBOARD
+                </h2>
+                <button class="iot-modal-close" id="iotModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="iot-modal-body">
+                <div class="iot-grid">
+                    <div class="iot-card">
+                        <div class="iot-card-header">
+                            <div class="iot-card-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <h3 class="iot-card-title">Earnings Performance</h3>
+                        </div>
+                        <div class="iot-card-value" id="iotEarnings">₦52,850</div>
+                        <p class="iot-card-label">Real-time monthly tracking</p>
+                    </div>
+                    
+                    <div class="iot-card">
+                        <div class="iot-card-header">
+                            <div class="iot-card-icon">
+                                <i class="fas fa-gamepad"></i>
+                            </div>
+                            <h3 class="iot-card-title">Game Activity</h3>
+                        </div>
+                        <div class="iot-card-value" id="iotGames">78%</div>
+                        <p class="iot-card-label">Optimal engagement level</p>
+                    </div>
+                    
+                    <div class="iot-card">
+                        <div class="iot-card-header">
+                            <div class="iot-card-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="iot-card-title">Team Performance</h3>
+                        </div>
+                        <div class="iot-card-value" id="iotTeam">92%</div>
+                        <p class="iot-card-label">Referral conversion rate</p>
+                    </div>
+                    
+                    <div class="iot-card">
+                        <div class="iot-card-header">
+                            <div class="iot-card-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h3 class="iot-card-title">System Health</h3>
+                        </div>
+                        <div class="iot-card-value" id="iotHealth">100%</div>
+                        <p class="iot-card-label">Platform uptime & stability</p>
+                    </div>
+                </div>
+                
+                <div class="iot-chart-container">
+                    <h3 class="iot-chart-title">Earnings Trend (Last 30 Days)</h3>
+                    <canvas id="iotChart" height="150"></canvas>
+                </div>
+                
+                <div class="iot-controls">
+                    <button class="iot-btn" id="iotRefresh">
+                        <i class="fas fa-sync-alt"></i> Refresh Data
+                    </button>
+                    <button class="iot-btn iot-btn-secondary" id="iotExport">
+                        <i class="fas fa-download"></i> Export Report
+                    </button>
+                    <button class="iot-btn iot-btn-secondary" id="iotNotify">
+                        <i class="fas fa-bell"></i> Set Alert
+                    </button>
+                </div>
+                
+                <div class="iot-device-list">
+                    <h3 style="color: white; margin-bottom: 20px;">
+                        <i class="fas fa-microchip"></i> Connected Devices
+                    </h3>
+                    <div class="device-item">
+                        <div class="device-info">
+                            <h4>Mobile App</h4>
+                            <p style="color: var(--gray-300); font-size: 0.9rem;">Your primary device</p>
+                        </div>
+                        <div class="device-status">
+                            <div class="status-indicator"></div>
+                            <span style="color: var(--iot-green);">Connected</span>
+                        </div>
+                    </div>
+                    
+                    <div class="device-item">
+                        <div class="device-info">
+                            <h4>Desktop Dashboard</h4>
+                            <p style="color: var(--gray-300); font-size: 0.9rem;">Secondary monitoring</p>
+                        </div>
+                        <div class="device-status">
+                            <div class="status-indicator offline"></div>
+                            <span style="color: #FF6584;">Disconnected</span>
+                        </div>
+                    </div>
+                    
+                    <div class="device-item">
+                        <div class="device-info">
+                            <h4>Smart Notifications</h4>
+                            <p style="color: var(--gray-300); font-size: 0.9rem;">Push alerts active</p>
+                        </div>
+                        <div class="device-status">
+                            <div class="status-indicator"></div>
+                            <span style="color: var(--iot-green);">Active</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -838,6 +1226,15 @@
                     <a href="#features" class="nav-link">Features</a>
                     <a href="#testimonials" class="nav-link">Success Stories</a>
                     <a href="#faq" class="nav-link">FAQ</a>
+                    <!-- IoT Menu Item -->
+                    <a href="#" class="nav-link" id="iotMenuBtn">
+                        <i class="fas fa-satellite-dish"></i> IoT Dashboard
+                    </a>
+                    <!-- APK Download Button in Nav -->
+                    <a href="./flexia-app.apk" class="apk-download-btn" id="navApkBtn" download="Flexia-Premium-App.apk">
+                        <i class="fas fa-download"></i>
+                        <span>Download App</span>
+                    </a>
                     <a href="https://chat-3zot.onrender.com" class="chat-support-btn" target="_blank">
                         <i class="fas fa-headset"></i>
                         <span>Support</span>
@@ -910,6 +1307,28 @@
                         <i class="fas fa-star"></i>
                         <span>View Benefits</span>
                     </a>
+                    <!-- APK Download Button in Hero -->
+                    <a href="./flexia-app.apk" class="apk-download-btn" id="heroApkBtn" download="Flexia-Premium-App.apk">
+                        <i class="fas fa-download"></i>
+                        <span>Download Mobile App</span>
+                    </a>
+                </div>
+                
+                <!-- APK Download Info Section -->
+                <div class="apk-download-section">
+                    <h3 style="color: white; margin-bottom: 15px;">
+                        <i class="fas fa-mobile-alt"></i> Get Our Mobile App
+                    </h3>
+                    <a href="./flexia-app.apk" class="apk-download-btn" id="mainApkBtn" download="Flexia-Premium-App.apk">
+                        <i class="fas fa-download"></i>
+                        <span>Download Flexia Premium APK</span>
+                    </a>
+                    <p class="apk-info">
+                        Version 2.0.1 • Android 8.0+ • File Size: 48MB
+                    </p>
+                    <p class="apk-info">
+                        <i class="fas fa-shield-alt"></i> 100% Safe & Secure
+                    </p>
                 </div>
             </div>
         </div>
@@ -1068,6 +1487,16 @@
                         <p style="color: var(--gray-300);">Minimum withdrawal is ₦500, processed within 24 hours on business days. All withdrawals go directly to your Nigerian bank account with zero fees.</p>
                     </div>
                 </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <h3>How do I install the Flexia Premium app?</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p style="color: var(--gray-300);">Simply download the APK file from our website, enable "Install from Unknown Sources" in your Android settings, and install the app. Follow the in-app instructions to get started.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1089,6 +1518,11 @@
                 <a href="https://flexiapremium.onrender.com/register" class="btn btn-primary" target="_blank">
                     <i class="fas fa-lock"></i>
                     <span>Secure Registration</span>
+                </a>
+                <!-- APK Download Button in CTA -->
+                <a href="./flexia-app.apk" class="apk-download-btn" id="ctaApkBtn" download="Flexia-Premium-App.apk">
+                    <i class="fas fa-download"></i>
+                    <span>Get Mobile App</span>
                 </a>
             </div>
             
@@ -1114,6 +1548,13 @@
                     <p style="color: var(--gray-300); font-size: 0.9rem;">
                         Your ₦8,000 investment gateway to financial freedom through gaming.
                     </p>
+                    <!-- APK Download in Footer -->
+                    <div style="margin-top: 20px;">
+                        <a href="./flexia-app.apk" class="apk-download-btn" id="footerApkBtn" download="Flexia-Premium-App.apk" style="padding: 10px 20px; font-size: 0.9rem;">
+                            <i class="fas fa-download"></i>
+                            <span>Download Mobile App</span>
+                        </a>
+                    </div>
                 </div>
                 
                 <div>
@@ -1123,6 +1564,8 @@
                         <a href="#features">Features</a>
                         <a href="#testimonials">Success Stories</a>
                         <a href="#faq">FAQ</a>
+                        <a href="#" id="iotFooterBtn">IoT Dashboard</a>
+                        <a href="./flexia-app.apk" download="Flexia-Premium-App.apk">Download App</a>
                         <a href="https://chat-3zot.onrender.com" target="_blank">Chat Support</a>
                         <a href="https://flexiapremium.onrender.com/register" target="_blank">Register Now</a>
                     </div>
@@ -1133,6 +1576,7 @@
                     <div class="footer-links">
                         <p style="color: var(--gray-300);"><i class="fas fa-envelope"></i> flexiapremium@gmail.com</p>
                         <p style="color: var(--gray-300);"><i class="fas fa-clock"></i> Support: 24/7 Available</p>
+                        <p style="color: var(--gray-300);"><i class="fas fa-mobile-alt"></i> Mobile App: Android 8.0+</p>
                     </div>
                 </div>
             </div>
@@ -1140,6 +1584,12 @@
             <div class="footer-bottom">
                 <p>&copy; 2025-2026 Flexia Premium NG. All rights reserved.</p>
                 <p>This is a premium gaming investment platform. Earnings vary based on participation.</p>
+                <p style="margin-top: 10px;">
+                    <i class="fas fa-download"></i> 
+                    <a href="./flexia-app.apk" style="color: var(--accent); text-decoration: none;" download="Flexia-Premium-App.apk">
+                        Download Flexia Premium App (APK)
+                    </a>
+                </p>
             </div>
         </div>
     </footer>
@@ -1161,6 +1611,238 @@
                     document.getElementById('loadingScreen').style.display = 'none';
                 }, 500);
             }, 1000);
+            
+            // IoT Dashboard Variables
+            let iotChart = null;
+            let iotData = {
+                earnings: 52850,
+                games: 78,
+                team: 92,
+                health: 100,
+                history: [12000, 18000, 25000, 32000, 42000, 48500, 52850]
+            };
+            
+            // Initialize IoT Dashboard
+            function initIoTDashboard() {
+                const ctx = document.getElementById('iotChart').getContext('2d');
+                
+                // Destroy existing chart if it exists
+                if (iotChart) {
+                    iotChart.destroy();
+                }
+                
+                iotChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['Day 1', 'Day 7', 'Day 14', 'Day 17', 'Day 21', 'Day 25', 'Day 30'],
+                        datasets: [{
+                            label: 'Earnings (₦)',
+                            data: iotData.history,
+                            borderColor: '#00FF88',
+                            backgroundColor: 'rgba(0, 255, 136, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                labels: {
+                                    color: '#fff'
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#8A8AA3'
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                },
+                                ticks: {
+                                    color: '#8A8AA3',
+                                    callback: function(value) {
+                                        return '₦' + value.toLocaleString();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                // Update IoT values
+                updateIoTValues();
+            }
+            
+            // Update IoT display values
+            function updateIoTValues() {
+                document.getElementById('iotEarnings').textContent = '₦' + iotData.earnings.toLocaleString();
+                document.getElementById('iotGames').textContent = iotData.games + '%';
+                document.getElementById('iotTeam').textContent = iotData.team + '%';
+                document.getElementById('iotHealth').textContent = iotData.health + '%';
+            }
+            
+            // IoT Dashboard Functions
+            function openIoTDashboard() {
+                document.getElementById('iotModal').classList.add('active');
+                document.body.style.overflow = 'hidden';
+                initIoTDashboard();
+            }
+            
+            function closeIoTDashboard() {
+                document.getElementById('iotModal').classList.remove('active');
+                document.body.style.overflow = '';
+            }
+            
+            // Refresh IoT Data
+            function refreshIoTData() {
+                // Simulate data update
+                iotData.earnings += Math.floor(Math.random() * 500);
+                iotData.games = 70 + Math.floor(Math.random() * 30);
+                iotData.team = 85 + Math.floor(Math.random() * 15);
+                iotData.health = 95 + Math.floor(Math.random() * 5);
+                
+                // Add new data point to history
+                iotData.history.push(iotData.earnings);
+                if (iotData.history.length > 7) {
+                    iotData.history.shift();
+                }
+                
+                updateIoTValues();
+                initIoTDashboard();
+                
+                // Show refresh notification
+                showNotification('IoT data refreshed successfully!', 'success');
+            }
+            
+            // Show notification
+            function showNotification(message, type) {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    background: ${type === 'success' ? 'linear-gradient(135deg, #00FF88, #00D4AA)' : 'linear-gradient(135deg, #FF6584, #FF3333)'};
+                    color: white;
+                    padding: 15px 25px;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+                    z-index: 10000;
+                    animation: slideIn 0.3s ease;
+                    font-weight: 600;
+                `;
+                
+                notification.textContent = message;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.style.animation = 'slideOut 0.3s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(notification);
+                    }, 300);
+                }, 3000);
+            }
+            
+            // APK Download Handler
+            function handleApkDownload(event, source) {
+                event.preventDefault();
+                
+                const apkUrl = './flexia-app.apk';
+                const fileName = 'Flexia-Premium-App-v2.0.1.apk';
+                
+                // Create download notification
+                showNotification('Downloading Flexia Premium App...', 'success');
+                
+                // Create invisible download link
+                const downloadLink = document.createElement('a');
+                downloadLink.href = apkUrl;
+                downloadLink.download = fileName;
+                downloadLink.style.display = 'none';
+                document.body.appendChild(downloadLink);
+                
+                // Trigger download
+                downloadLink.click();
+                
+                // Clean up
+                setTimeout(() => {
+                    document.body.removeChild(downloadLink);
+                }, 100);
+                
+                // Track download
+                console.log(`APK download initiated from: ${source}`);
+                
+                // Show success message after delay
+                setTimeout(() => {
+                    showNotification('Download started! Check your downloads folder.', 'success');
+                }, 1000);
+            }
+            
+            // IoT Event Listeners
+            document.getElementById('iotMenuBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                openIoTDashboard();
+            });
+            
+            document.getElementById('iotFooterBtn').addEventListener('click', function(e) {
+                e.preventDefault();
+                openIoTDashboard();
+            });
+            
+            document.getElementById('iotModalClose').addEventListener('click', closeIoTDashboard);
+            
+            document.getElementById('iotRefresh').addEventListener('click', refreshIoTData);
+            
+            document.getElementById('iotExport').addEventListener('click', function() {
+                showNotification('IoT Report exported successfully!', 'success');
+            });
+            
+            document.getElementById('iotNotify').addEventListener('click', function() {
+                showNotification('Alerts configured successfully!', 'success');
+            });
+            
+            // APK Download Event Listeners
+            document.getElementById('navApkBtn').addEventListener('click', function(e) {
+                handleApkDownload(e, 'navigation');
+            });
+            
+            document.getElementById('heroApkBtn').addEventListener('click', function(e) {
+                handleApkDownload(e, 'hero section');
+            });
+            
+            document.getElementById('mainApkBtn').addEventListener('click', function(e) {
+                handleApkDownload(e, 'main download section');
+            });
+            
+            document.getElementById('ctaApkBtn').addEventListener('click', function(e) {
+                handleApkDownload(e, 'CTA section');
+            });
+            
+            document.getElementById('footerApkBtn').addEventListener('click', function(e) {
+                handleApkDownload(e, 'footer');
+            });
+            
+            // Close IoT modal on ESC key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeIoTDashboard();
+                }
+            });
+            
+            // Close IoT modal on background click
+            document.getElementById('iotModal').addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closeIoTDashboard();
+                }
+            });
             
             // Mobile Menu Toggle
             const mobileMenuBtn = document.getElementById('mobileMenuBtn');
@@ -1357,6 +2039,8 @@
             });
             
             console.log('Flexia Premium NG loaded successfully');
+            console.log('IoT Dashboard initialized');
+            console.log('APK Download functionality ready');
         });
     </script>
 </body>
